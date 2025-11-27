@@ -1,0 +1,411 @@
+/* =========================
+   1) VARIABLES GLOBALES
+   ========================= */
+:root{
+  --fuentePrincipal: 'Inter';
+  --colorfondo: #141619;
+  --separacion-menu: 2rem;
+  --azulitems: #6ec0e0;
+  --turquezaitems: #a0d8c0;
+  --amarilloitems: #e0c880;
+}
+
+/* =========================
+   2) RESET / BASE
+   ========================= */
+html{ box-sizing: border-box; font-size:62.5%; } /* 1rem = 10px */
+*, *::before, *::after { box-sizing: inherit; }
+
+body{
+  background-color: var(--colorfondo);
+  font-size: 2rem;
+  color: white;
+  font-family: var(--fuentePrincipal);
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background-image: none !important;
+  background-attachment: scroll !important;
+  overflow-x: hidden; /* importante para clip-paths */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   3) TIPOGRAFÍA / ENCABEZADOS
+   ========================= */
+h1{
+  font-size: 5rem; /* ajustado para móviles/tablets */
+  font-weight: 500;
+  line-height: 1.1;
+  padding-top: 10rem;
+}
+h2{
+  font-size: 3.5rem;
+  font-weight: 500;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+h3{
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding-top: 5rem;
+}
+
+/* =========================
+   4) CONTENEDOR GENERALES
+   ========================= */
+.container{
+  text-align: inherit;
+  align-items: inherit;
+}
+
+/* =========================
+   5) IMÁGENES RESPONSIVAS
+   ========================= */
+/* Aplica a .logofooter, .logonav y todas las imágenes dentro de .container */
+.logofooter, .logonav, .container img{
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================
+   6) FOOTER
+   ========================= */
+footer{
+  background-color: var(--colorfondo);
+  color: white;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Footer - título, links y copyright (preserva selectores) */
+.footer-title{
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-left: 0;
+  text-transform: uppercase;
+}
+.footer-link{
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-left: 0;
+  transition: color 0.3s ease;
+}
+.Terms{
+  padding-top: 10rem; /* se ajusta con media queries abajo */
+}
+.footer-link:hover{ color: var(--turquezaitems); }
+.footer-copyright{
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.7);
+  margin-right: 0;
+  padding-top: 5rem;
+}
+/* logo del footer: mantiene comportamiento original (centrado en móviles) */
+.logofooter{
+  height: 10rem;
+  width: 10rem;
+  margin-right: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+/* =========================
+   7) NAVBAR
+   ========================= */
+.navbar{
+  background-color: var(--colorfondo) !important;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.logonav{
+  width: 50px;
+  height: 50px;
+}
+.navbar-nav{
+  display: flex;
+  gap: var(--separacion-menu);
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0;
+}
+.navbar-nav .nav-link{
+  color: whitesmoke !important;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.navbar-nav .nav-link:hover{ color: rgb(223,222,222) !important; }
+.navbar-nav .nav-link.active{ color: white !important; }
+
+/* =========================
+   8) BOTÓN GRADIENTE
+   ========================= */
+.custom-gradient-button{
+  background-image: linear-gradient(to right, var(--azulitems), var(--turquezaitems), var(--amarilloitems));
+  background-size: 200% auto;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-family: var(--fuentePrincipal), sans-serif;
+  font-weight: 500;
+  font-size: 1.9rem;
+  padding: 1.5rem 3rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-position 0.5s ease-out, box-shadow 0.3s ease-out;
+}
+.custom-gradient-button:hover{
+  background-position: right center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+/* =========================
+   9) PAGINA MAIN (texto central)
+   ========================= */
+.texto1index, .texto2index{
+  font-size: 1.8rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  max-width: 800px;
+  margin: 5rem auto;
+}
+
+/* luz de fondo (posicionamiento) */
+#luzDeFondo{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 900px;
+  background-image: url('../assets/imagenes/backborbujaazul.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 1700px auto;
+  z-index: -1;
+}
+
+/* =========================
+   10) DESCARGAR (sección)
+   ========================= */
+.descargar p{
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.descargar img{
+  padding: 7rem;
+}
+
+/* MODAL (texto negro en modal) */
+.modal-title{ padding: 0; color: black; }
+.modal-body p{ color: black; }
+
+/* =========================
+   11) MEDIA QUERIES (RESPONSIVE)
+   ========================= */
+/* -- Móviles: max-width 768px -- */
+@media (max-width: 768px){
+  h1{ font-size: 5rem; padding-top: 10rem; }
+  h2{ font-size: 3.5rem; }
+  h3{ font-size: 2.5rem; }
+
+  /* imágenes dentro de container excepto logos */
+  .container img:not(.logofooter):not(.logonav){
+    width: 90%;
+    max-width: 90%;
+    height: auto;
+    padding: 0;
+    margin: 2rem auto;
+    display: block;
+  }
+
+  #imgStart{
+    width: 30%;
+    max-width: 30%;
+    height: auto;
+    padding: 0;
+    margin: 2rem auto;
+    display: block;
+  }
+
+  .logofooter{
+    width: 10rem;
+    height: 10rem;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .footer-link, .footer-title{
+    text-align: center;
+    padding-top: 0.5rem;
+  }
+
+  .Terms{ padding-top: 3rem; }
+  .footer-copyright{ padding-top: 3rem; }
+
+  .modal-body p{ font-size: 1.6rem; padding: 1rem; }
+
+  .container.nosotros{ padding-left: 0; padding-right: 0; }
+  .container{ padding-left: 1rem; padding-right: 1rem; }
+  .container.guia{ padding-left: 0; padding-right: 0; }
+
+  .slidePers .carousel-inner{ height: 200px !important; min-height: 200px; max-height:200px !important; }
+  .slidePers .carousel-item img{ height: 200px !important; }
+}
+
+/* -- Desktop mediano: min-width 992px -- */
+@media (min-width: 992px){
+  .navbar-nav{ gap: 15rem; } /* restaura separación grande */
+
+  /* Footer: restaurar márgenes en escritorio */
+  .footer-title{ margin-left: 10rem; text-align: left; }
+  .footer-link{ margin-left: 10rem; text-align: left; }
+  .footer-copyright{ margin-right: 10rem; }
+  .logofooter{ margin-right: 10rem; margin-left: auto; }
+
+  /* Descargar: márgenes grandes */
+  .descargar p{ padding-left: 25rem; padding-right: 25rem; }
+  .modal-body p{ font-size: 1.8rem; padding: 1rem; }
+
+  .slidePers .carousel-inner{ height: 300px !important; min-height: 300px; max-height:300px !important; }
+  .slidePers .carousel-item img{ height: 300px !important; }
+}
+
+/* -- Desktop extra grande: min-width 1200px -- */
+@media (min-width: 1200px){
+  .texto1index{ margin-left: 40rem; margin-right: 40rem; max-width: none; margin-top: 5rem; margin-bottom: 5rem; }
+  .texto2index{ margin-left: 36rem; margin-right: 36rem; max-width: none; padding-top: 30rem; padding-bottom: 30rem; }
+}
+
+/* =========================
+   12) NOSOTROS (sección)
+   ========================= */
+.nosotros{ padding-left: 25rem; padding-right: 25rem; }
+.nosotros p{ padding-top: 5rem; padding-bottom: 5rem; }
+.nosotros h3{ padding-bottom: 5rem; }
+
+/* Feature box 3x2 */
+.feature-box{
+  padding: 3rem 2rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  border: 1px solid var(--turquezaitems);
+}
+.feature-box .title{ font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; text-transform: uppercase; padding: 0; }
+.feature-box .description{ font-size: 1.6rem; font-weight: 300; opacity: 0.8; padding: 0; }
+
+/* Boxes de color */
+.box-blue{ background: linear-gradient(135deg, var(--turquezaitems) 10%, var(--azulitems) 100%); }
+.box-dark{ background-color: var(--colorfondo); }
+.box-dark .title, .box-dark .description{ color: white; }
+
+/* =========================
+   13) LISTAS PERSONALIZADAS
+   ========================= */
+.lista-custom{
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  text-align: left;
+  max-width: 800px;
+  margin: 5rem auto;
+}
+.lista-custom li{
+  color: white;
+  font-size: 1.8rem;
+  padding: 1.5rem 0;
+  padding-left: 2rem;
+  position: relative;
+}
+.lista-custom li::before{
+  content: "•";
+  color: white;
+  font-size: 2.5rem;
+  line-height: 1;
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+}
+@media (max-width: 767px){ .lista-custom li{ font-size: 1.6rem; } .lista-custom{ margin:3rem 1rem; padding-left:1rem; } }
+
+/* =========================
+   14) ACORDEÓN / FAQ
+   ========================= */
+#faqAccordion{ max-width: 800px; margin-left:auto; margin-right:auto; padding-top:5rem; padding-bottom:20rem; }
+#faqAccordion .accordion-item .accordion-header{ padding: 0 !important; }
+.accordion-item{ background-color: transparent; border: none; margin-bottom: 0.1rem; }
+.faq-question-dark{
+  background-color: rgba(65,85,114,0.15) !important;
+  color: white !important;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid var(--colorfondo);
+  border-radius: 0;
+  padding: 1.2rem 1.5rem !important;
+}
+.faq-question-dark::after{ filter: invert(1) grayscale(1) brightness(1.5); }
+.faq-question-dark:not(.collapsed){ background-color: var(--colorfondo) !important; box-shadow: none; color: white !important; border-bottom: 1px solid var(--colorfondo); }
+.faq-question-dark:focus{ box-shadow: none; border-color: transparent; }
+.faq-answer-blue{ background-color: #99D0CB; color: black; font-size: 1.6rem; text-align:left; border:none; padding:1.5rem 2rem; }
+.accordion-item:first-of-type .accordion-button{ border-top-left-radius:0; border-top-right-radius:0; }
+.accordion-item:last-of-type .accordion-button.collapsed{ border-bottom-left-radius:0; border-bottom-right-radius:0; }
+.accordion-item:first-of-type{ border-top: none; }
+
+/* =========================
+   15) GUÍA (sección específica)
+   ========================= */
+.guia{ padding-left: 25rem; padding-right: 25rem; }
+.guia p{ padding-top: 5rem; padding-bottom: 5rem; }
+.guia h3{ padding-bottom: 5rem; }
+/* conserva la familia y tamaño solicitados */
+.guia h2{ font-family: var(--fuentePrincipal); font-size: 3.5rem; font-weight: 500; }
+
+/* SLIDE / CAROUSEL PERSONALIZADO */
+.slidePers{ margin-top:15rem; margin-bottom:10rem; }
+.slidePers .carousel-inner{ height: 400px; max-height: 400px; overflow: hidden; }
+.slidePers .carousel-item img{ height: 400px; object-fit: cover; }
+
+/* =========================
+   16) ANIMACIONES
+   ========================= */
+/* aparecer subiendo */
+.titulo{ opacity:0; animation: subir 0.8s ease-out forwards; }
+@keyframes subir{ from{ transform: translateY(30px); opacity:0; } to{ transform: translateY(0); opacity:1; } }
+
+/* fade-right para secciones */
+.fade-right{ opacity:0; animation: fadeRight 0.8s ease forwards; }
+@keyframes fadeRight{ from{ opacity:0; transform: translateX(40px); } to{ opacity:1; transform: translateX(0); } }
+
+/* subrayado animado */
+.underline{ display:inline-block; position: relative; }
+.underline::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  left: 0;
+  bottom: 4.5rem; /* ajustar para ubicar la línea sin tocar padding del elemento */
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+.underline:hover::after{ transform: scaleX(1); transform-origin: left; }
